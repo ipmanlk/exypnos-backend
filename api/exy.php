@@ -2,7 +2,7 @@
 
 require_once ('../config/config.php');
 
-$getData = mysqli_query($link, "SELECT * FROM posts ORDER BY post_id DESC");
+$getData = mysqli_query($link, "SELECT * FROM author_posts ORDER BY post_id DESC");
 $postData = array();
 
 
