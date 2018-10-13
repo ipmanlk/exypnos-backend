@@ -12,6 +12,7 @@ if (isset($_SESSION['username']) || !empty($_SESSION['username'])) {
   <title>Exypnos : Log in</title>
   <link rel="stylesheet" href="./css/bootstrap.min.css">
   <script src="./js/jquery-3.3.1.min.js" charset="utf-8"></script>
+  <script src="./js/bootstrap.min.js" charset="utf-8"></script>
 </head>
 <body class="bg-dark">
   <div class="container py-5">

@@ -6,6 +6,7 @@
   <title>Exypnos : Dashboard</title>
   <link rel="stylesheet" href="../css/bootstrap.min.css">
   <script src="../js/jquery-3.3.1.min.js" charset="utf-8"></script>
+  <script src="../js/bootstrap.min.js" charset="utf-8"></script>
 </head>
 <body>
   <?php
