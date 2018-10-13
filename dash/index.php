@@ -2,6 +2,7 @@
 <html lang="en" dir="ltr">
 <head>
   <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Exypnos : Dashboard</title>
   <link rel="stylesheet" href="../css/bootstrap.min.css">
   <script src="../js/jquery-3.3.1.min.js" charset="utf-8"></script>
