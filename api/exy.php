@@ -10,7 +10,7 @@ while ($row = mysqli_fetch_assoc($getData)) {
   $postData[] = $row;
 }
 
-echo json_encode($postData);
+echo (json_encode($postData));
 
 mysqli_close($link);
 ?>
