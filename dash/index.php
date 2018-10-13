@@ -24,12 +24,8 @@
                 <input type="text" class="form-control" id="title" name="title" maxlength="70">
               </div>
               <div class="form-group">
-                <label for="title">Title:</label>
-                <input type="text" class="form-control" id="shortdes" name="shortdes" maxlength="100">
-              </div>
-              <div class="form-group">
                 <label for="title">Short Description:</label>
-                <input type="text" class="form-control" id="title" name="title" maxlength="100">
+                <input type="text" class="form-control" id="shortdes" name="shortdes" maxlength="100">
               </div>
               <div class="form-group">
                 <label for="post">Post:</label>
