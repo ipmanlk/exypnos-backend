@@ -6,7 +6,7 @@
   <div class="collapse navbar-collapse justify-content-between" id="mainNavBar">
     <ul class="navbar-nav mr-aut">
       <li class="nav-item">
-        <a class="nav-link" href="post.php">Add Post</a>
+        <a class="nav-link" href="post.php?action=add">Add Post</a>
       </li>
       <li class="nav-item">
         <a class="nav-link" href="addUser.php">Add User</a>
