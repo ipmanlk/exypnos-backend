@@ -1,5 +1,6 @@
 const dataTable = $('.table').DataTable( {
-  responsive: true
+  responsive: true,
+  order: [[ 1, "desc" ]]
 });
 
 function editPost(postID) {
