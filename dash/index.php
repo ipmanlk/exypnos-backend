@@ -38,7 +38,10 @@
               while ($row=mysqli_fetch_array($result)) {
                 echo '<tr>';
                 echo '<td>' . $row['title'] . '</td>';
-                echo '<td>' . $row['datetime'] . '</td>';
+                $dateTime= new DateTime($row['datetime']);
+                $dateTime->setTimezone(new DateTimeZone('Asia/Colombo'));
+                $lkDateTime =  date_format($dateTime, 'Y-m-d H:i:s');
+                echo '<td>' . $lkDateTime . '</td>';
                 echo '<td>' . $row['uname'] . '</td>';
                 echo '<td>' .
                 '<button type="button" class="btn btn-primary" onclick="editPost(' ."'" . $row['post_id'] . "'". ')">Edit</button>'

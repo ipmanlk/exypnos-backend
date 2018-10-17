@@ -18,6 +18,10 @@ if (isset($_GET['id'])) {
   $postData = array();
 
   while ($row = mysqli_fetch_assoc($result)) {
+    $dateTime= new DateTime($row['datetime']);
+    $dateTime->setTimezone(new DateTimeZone('Asia/Colombo'));
+    $lkDateTime =  date_format($dateTime, 'Y-m-d g:i A');
+    $row['datetime']=$lkDateTime;
     $postData[] = $row;
   }
 
