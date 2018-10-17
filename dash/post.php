@@ -22,7 +22,7 @@
         require_once('../config/config.php');
         $post_id = trim($_GET['post_id']);
 
-        $stmt = mysqli_prepare($link, "SELECT author_id, title,cover_img,post,card_img1,card_img2,author_id FROM posts WHERE post_id=?");
+        $stmt = mysqli_prepare($link, "SELECT author_id, title,cover_img,post,card_img1,card_img2,author_id,short_des FROM posts WHERE post_id=?");
 
         mysqli_stmt_bind_param($stmt, "s", $post_id);
         mysqli_stmt_execute($stmt);
@@ -35,7 +35,7 @@
         // assign post data
         $author_id = $row['author_id'];
         $title = $row['title'];
-        $short_des = $row['title'];
+        $short_des = $row['short_des'];
         $post = $row['post'];
         $cover_img = $row['cover_img'];
         $card_img1 = $row['card_img1'];
