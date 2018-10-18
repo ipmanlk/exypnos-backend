@@ -34,7 +34,7 @@
             <tbody>
               <?php
               require_once("../config/config.php");
-              $result=mysqli_query($link,"SELECT post_id,uname,title,datetime FROM author,posts WHERE posts.author_id = author.author_id");
+              $result=mysqli_query($link,"SELECT post_id,uname,title,datetime FROM author,post WHERE post.author_id = author.author_id");
               while ($row=mysqli_fetch_array($result)) {
                 echo '<tr>';
                 echo '<td>' . $row['title'] . '</td>';
