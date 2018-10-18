@@ -27,6 +27,7 @@
               <tr>
                 <th>Post Title</th>
                 <th>Posted Date</th>
+                <th>Category</th>
                 <th>Author</th>
                 <th>Action</th>
               </tr>
@@ -34,7 +35,7 @@
             <tbody>
               <?php
               require_once("../config/config.php");
-              $result=mysqli_query($link,"SELECT post_id,uname,title,datetime FROM author,post WHERE post.author_id = author.author_id");
+              $result=mysqli_query($link,"SELECT post_id,uname,title,datetime,name as category FROM author,post, category WHERE post.author_id = author.author_id AND post.cat_id = category.cat_id");
               while ($row=mysqli_fetch_array($result)) {
                 echo '<tr>';
                 echo '<td>' . $row['title'] . '</td>';
@@ -42,6 +43,7 @@
                 $dateTime->setTimezone(new DateTimeZone('Asia/Colombo'));
                 $lkDateTime =  date_format($dateTime, 'Y-m-d H:i:s');
                 echo '<td>' . $lkDateTime . '</td>';
+                echo '<td>' . $row['category'] . '</td>';
                 echo '<td>' . $row['uname'] . '</td>';
                 echo '<td>' .
                 '<button type="button" class="btn btn-primary" onclick="editPost(' ."'" . $row['post_id'] . "'". ')">Edit</button>'
