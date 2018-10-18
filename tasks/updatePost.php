@@ -20,7 +20,7 @@ foreach($required as $field) {
 if (!$error) {
   require_once ('../config/config.php');
   //prepare statement to insert values
-  $stmt = mysqli_prepare($link, "UPDATE posts SET title=?,post=?,cover_img=?,card_img1=?,card_img2=?,author_id=?,short_des=? WHERE post_id=?");
+  $stmt = mysqli_prepare($link, "UPDATE post SET title=?,post=?,cover_img=?,card_img1=?,card_img2=?,author_id=?,short_des=? WHERE post_id=?");
   mysqli_stmt_bind_param($stmt,'ssssssss',$title,$post,$coverimg,$cardimg1,$cardimg2,$author,$shortdes,$postid);
 
   //assign values
