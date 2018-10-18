@@ -60,7 +60,7 @@
               </div>
               <div class="form-group">
                 <label for="title">Short Description:</label>
-                <input type="text" class="form-control" id="shortdes" name="shortdes" maxlength="100" value=<?php echo '"'. $title .'"'; ?>>
+                <input type="text" class="form-control" id="shortdes" name="shortdes" maxlength="100" value=<?php echo '"'. $short_des .'"'; ?>>
               </div>
               <div class="form-group">
                 <label for="post">Post:</label>
