@@ -12,6 +12,8 @@
   <?php
   require_once '../tasks/checkSession.php';
   require_once '../content/navBar.php';
+  require_once '../config/config.php';
+
   $author_id = $_SESSION['author_id'];
   if (isset($_GET['action']) && !empty($_GET['action'])) {
     $title = $short_des  = $post = $cover_img = $card_img1 = $card_img2 = $post_id = "";
@@ -19,10 +21,9 @@
     if ($action == 'edit') {
       if (isset($_GET['post_id']) && !empty($_GET['post_id'])) {
         // get post data related to post id
-        require_once('../config/config.php');
         $post_id = trim($_GET['post_id']);
 
-        $stmt = mysqli_prepare($link, "SELECT author_id, title,cover_img,post,card_img1,card_img2,author_id,short_des FROM posts WHERE post_id=?");
+        $stmt = mysqli_prepare($link, "SELECT author_id, title,cover_img,post,card_img1,card_img2,author_id,short_des FROM post WHERE post_id=?");
 
         mysqli_stmt_bind_param($stmt, "s", $post_id);
         mysqli_stmt_execute($stmt);
@@ -30,7 +31,6 @@
         // put post data in $row array
         $row = mysqli_fetch_assoc(mysqli_stmt_get_result($stmt));
         mysqli_stmt_close($stmt);
-        mysqli_close($link);
 
         // assign post data
         $author_id = $row['author_id'];
@@ -64,6 +64,19 @@
               <div class="form-group">
                 <label for="post">Post:</label>
                 <textarea class="form-control" id="post" name="post" rows="10" cols="80"><?php echo $post; ?></textarea>
+              </div>
+              <div class="form-group">
+                <label for="category">Category:</label>
+                <select class="form-control" id="categoryid" name="categoryid">
+                  <?php
+                  $result = mysqli_query($link, "SELECT * FROM category");
+                  while ($row = mysqli_fetch_assoc($result)) {
+                    echo '<option value="' . $row['cat_id'] . '">' . $row['name'] . '</option>';
+                  }
+                  mysqli_free_result($result);
+                  mysqli_close($link);
+                  ?>
+                </select>
               </div>
             </div>
           </div>
@@ -101,12 +114,12 @@
           </div>
           <hr>
           <?php
-            if ($action == 'edit') {
-              echo '<button id="updatePostBtn" onclick="updatePost();"  class="btn btn-primary btn-block">Update Post</button>';
-            } else {
-              echo '<button id="addPostBtn" onclick="addPost();" class="btn btn-primary btn-block">Add Post</button>';
-            }
-           ?>
+          if ($action == 'edit') {
+            echo '<button id="updatePostBtn" onclick="updatePost();"  class="btn btn-primary btn-block">Update Post</button>';
+          } else {
+            echo '<button id="addPostBtn" onclick="addPost();" class="btn btn-primary btn-block">Add Post</button>';
+          }
+          ?>
           <button type="reset" class="btn btn-danger btn-block">Reset</button>
         </form>
       </div>
