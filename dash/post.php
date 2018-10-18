@@ -16,14 +16,14 @@
 
   $author_id = $_SESSION['author_id'];
   if (isset($_GET['action']) && !empty($_GET['action'])) {
-    $title = $short_des  = $post = $cover_img = $card_img1 = $card_img2 = $post_id = "";
+    $title = $short_des  = $post = $cover_img = $card_img1 = $card_img2 = $post_id = $cat_id = "";
     $action = $_GET['action'];
     if ($action == 'edit') {
       if (isset($_GET['post_id']) && !empty($_GET['post_id'])) {
         // get post data related to post id
         $post_id = trim($_GET['post_id']);
 
-        $stmt = mysqli_prepare($link, "SELECT author_id, title,cover_img,post,card_img1,card_img2,author_id,short_des FROM post WHERE post_id=?");
+        $stmt = mysqli_prepare($link, "SELECT author_id, title,cover_img,post,card_img1,card_img2,author_id,short_des,cat_id FROM post WHERE post_id=?");
 
         mysqli_stmt_bind_param($stmt, "s", $post_id);
         mysqli_stmt_execute($stmt);
@@ -40,6 +40,7 @@
         $cover_img = $row['cover_img'];
         $card_img1 = $row['card_img1'];
         $card_img2 = $row['card_img2'];
+        $cat_id = $row['cat_id'];
       }
     }
   } else {
@@ -71,7 +72,11 @@
                   <?php
                   $result = mysqli_query($link, "SELECT * FROM category");
                   while ($row = mysqli_fetch_assoc($result)) {
-                    echo '<option value="' . $row['cat_id'] . '">' . $row['name'] . '</option>';
+                    if ($row['cat_id'] == $cat_id) {
+                      echo '<option value="' . $row['cat_id'] . '" selected>' . $row['name'] . '</option>';
+                    } else {
+                      echo '<option value="' . $row['cat_id'] . '">' . $row['name'] . '</option>';
+                    }
                   }
                   mysqli_free_result($result);
                   mysqli_close($link);
