@@ -200,7 +200,7 @@
         dataTable.row.add([
           catData[item].cat_id,
           catData[item].name,
-          `<button type="button" class="btn btn-primary" onclick="editCatModal('${catData[item].cat_id}, ${catData[item].name}')">Edit</button> <button type="button" class="btn btn-danger" onclick="deleteCat('${catData[item].cat_id}')">Delete</button>`
+          `<button type="button" class="btn btn-primary" onclick="editCatModal('${catData[item].cat_id}', '${catData[item].name}')">Edit</button> <button type="button" class="btn btn-danger" onclick="deleteCat('${catData[item].cat_id}')">Delete</button>`
         ]).draw();
       }
   });
