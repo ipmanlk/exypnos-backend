@@ -96,6 +96,12 @@
   // selected cat ID
   var selectedCatID;
 
+  // data table
+  const dataTable = $('.table').DataTable( {
+    responsive: true,
+    order: [[ 0, "asc" ]]
+  });
+
   function addCatModal() {
     $('#modalTitle').text("Add Category");
     $('#btnAddCat').show();
