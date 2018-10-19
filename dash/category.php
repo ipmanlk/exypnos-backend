@@ -9,6 +9,8 @@
   <script src="../js/jquery-3.3.1.min.js" charset="utf-8"></script>
   <script type="text/javascript" src="https://cdn.datatables.net/v/bs4/jszip-2.5.0/dt-1.10.18/b-1.5.2/b-flash-1.5.2/b-html5-1.5.2/b-print-1.5.2/r-2.2.2/datatables.min.js"></script>
   <script src="../js/bootstrap.min.js" charset="utf-8"></script>
+  <script src="../js/bootstrap-notify.min.js" charset="utf-8"></script>
+
 </head>
 <body>
   <?php
@@ -152,7 +154,7 @@
       async: true,
       success: function(msg) {
         showOutput(url,msg);
-        setTimeout(refreshPage, 1000);
+        getCategoryData();
       }
     });
   }
@@ -187,11 +189,21 @@
       result = " Failed!"
     }
 
-    alert(type + result);
+    $.notify(type + result);
   }
 
-  function refreshPage() {
-    window.location = 'category.php';
+  function getCategoryData() {
+    dataTable.clear();
+    $.get("../tasks/getCategory.php" , function(data) {
+      const catData = JSON.parse(data);
+      for (item in catData) {
+        dataTable.row.add([
+          catData[item].cat_id,
+          catData[item].name,
+          `<button type="button" class="btn btn-primary" onclick="editCatModal('${catData[item].cat_id}, ${catData[item].name}')">Edit</button> <button type="button" class="btn btn-danger" onclick="deleteCat('${catData[item].cat_id}')">Delete</button>`
+        ]).draw();
+      }
+  });
   }
   </script>
 </body>
