@@ -4,4 +4,7 @@ if (!isset($_SESSION['username']) || empty($_SESSION['username'])) {
   header("location: ../index.php");
   exit;
 }
+
+$permission = $_SESSION['p'];
+
 ?>

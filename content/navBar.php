@@ -16,19 +16,9 @@
         </div>
       </li>
 
-      <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
-          Users
-        </a>
-        <div class="dropdown-menu">
-          <a class="dropdown-item" href="./addUser.php">Add User</a>
-        </div>
-      </li>
+      <?php if ($permission == 1) {echo '<li class="nav-item dropdown"><a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">Users</a> <div class="dropdown-menu"><a class="dropdown-item" href="./addUser.php">Add User</a></div></li>';}?>
 
-      <li class="nav-item">
-        <a class="nav-link" href="category.php">Category</a>
-      </li>
-
+      <?php if ($permission == 1) {echo '<li class="nav-item"><a class="nav-link" href="category.php">Category</a></li>';}?>
 
     </ul>
     <ul class="navbar-nav">

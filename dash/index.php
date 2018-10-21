@@ -35,7 +35,23 @@
             <tbody>
               <?php
               require_once("../config/config.php");
-              $result=mysqli_query($link,"SELECT post_id,uname,title,datetime,name as category FROM author,post, category WHERE post.author_id = author.author_id AND post.cat_id = category.cat_id");
+              if ($permission == 1) {
+                $result=mysqli_query($link,"SELECT post_id,uname,title,datetime,name as category FROM author,post, category WHERE post.author_id = author.author_id AND post.cat_id = category.cat_id");
+              } else {
+                $author_id = $_SESSION['author_id'];
+
+                $stmt = mysqli_prepare($link, "SELECT post_id,title,datetime,uname,name AS category FROM post,author,category WHERE post.author_id = ? AND post.author_id=author.author_id AND post.cat_id=category.cat_id");
+
+                mysqli_stmt_bind_param($stmt,'i', $author_id);
+
+                mysqli_stmt_execute($stmt);
+
+                $result = mysqli_stmt_get_result($stmt);
+
+                mysqli_stmt_close($stmt);
+
+              }
+
               while ($row=mysqli_fetch_array($result)) {
                 echo '<tr>';
                 echo '<td>' . $row['title'] . '</td>';
