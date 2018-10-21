@@ -18,8 +18,17 @@ foreach($required as $field) {
   }
 }
 
-$stmt = mysqli_prepare($link, "INSERT INTO author(uname, description, password) VALUES(?,?,?)");
-mysqli_stmt_bind_param($stmt,'sss', $username, $des, $pwd);
+$stmt = mysqli_prepare($link, "SELECT author_id FROM author ORDER BY author_id DESC LIMIT 1");
+mysqli_stmt_execute($stmt);
+$result = mysqli_stmt_get_result($stmt);
+mysqli_stmt_close($stmt);
+
+$result = mysqli_fetch_assoc($result);
+$lastAuthorID = (int)($result['author_id']);
+$authorID = $lastAuthorID + 1;
+
+$stmt = mysqli_prepare($link, "INSERT INTO author(author_id, uname, description, password) VALUES(?,?,?,?)");
+mysqli_stmt_bind_param($stmt,'isss', $authorID, $username, $des, $pwd);
 
 
 $username = trim($values['uname']);
