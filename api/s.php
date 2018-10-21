@@ -1,4 +1,5 @@
 <?php
+header('Access-Control-Allow-Origin: *');
 if ($_GET['s']) {
   if ($_GET['s'] !== "4a2204811369") {
     exit();
