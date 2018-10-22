@@ -4,9 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Exypnos : Add User</title>
-  <link rel="stylesheet" href="../css/bootstrap.min.css">
-  <script src="../js/jquery-3.3.1.min.js" charset="utf-8"></script>
-  <script src="../js/bootstrap.min.js" charset="utf-8"></script>
+  <?php require_once '../content/head.php'; ?>
 </head>
 <body>
   <?php

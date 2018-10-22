@@ -4,7 +4,7 @@
     <span class="navbar-toggler-icon"></span>
   </button>
   <div class="collapse navbar-collapse justify-content-between" id="mainNavBar">
-    <ul class="navbar-nav mr-aut">
+    <ul class="navbar-nav mr-auto">
 
       <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
@@ -21,13 +21,16 @@
       <?php if ($permission == 1) {echo '<li class="nav-item"><a class="nav-link" href="category.php">Category</a></li>';}?>
 
     </ul>
-    <ul class="navbar-nav">
-      <li class="nav-item">
-        <a class="nav-link" href="#"><?php if (isset($_SESSION['username'])) {echo $_SESSION['username'];}  ?></a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="../tasks/logout.php">Log out</a>
+    <ul class="navbar-nav  ml-auto">
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
+          <?php if (isset($_SESSION['username'])) {echo $_SESSION['username'];}  ?>
+        </a>
+        <div class="dropdown-menu">
+          <a class="dropdown-item" href="../tasks/logout.php">Log out</a>
+        </div>
       </li>
     </ul>
+
   </div>
 </nav>
