@@ -8,26 +8,37 @@
 
       <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
+          <i class="fa fa-file">&nbsp;</i>
           Posts
         </a>
         <div class="dropdown-menu">
-          <a class="dropdown-item" href="./post.php?action=add">Add Post</a>
-          <a class="dropdown-item" href="index.php">Edit Posts</a>
+          <a class="dropdown-item" href="./post.php?action=add">
+            <i class="fa fa-plus-square">&nbsp;</i>
+            Add Post
+          </a>
+          <a class="dropdown-item" href="index.php">
+            <i class="fa fa-edit">&nbsp;</i>
+            Edit Posts
+          </a>
         </div>
       </li>
 
-      <?php if ($permission == 1) {echo '<li class="nav-item dropdown"><a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">Users</a> <div class="dropdown-menu"><a class="dropdown-item" href="./addUser.php">Add User</a></div></li>';}?>
+      <?php if ($permission == 1) {echo '<li class="nav-item dropdown"><a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown"><i class="fa fa-users">&nbsp;</i>Users</a> <div class="dropdown-menu"><a class="dropdown-item" href="./addUser.php"><i class="fa fa-user-plus">&nbsp;</i>Add User</a></div></li>';}?>
 
-      <?php if ($permission == 1) {echo '<li class="nav-item"><a class="nav-link" href="category.php">Category</a></li>';}?>
+      <?php if ($permission == 1) {echo '<li class="nav-item"><a class="nav-link" href="category.php"><i class="fa fa-tags">&nbsp;</i>Category</a></li>';}?>
 
     </ul>
     <ul class="navbar-nav  ml-auto">
       <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
+          <i class="fa fa-user">&nbsp;</i>
           <?php if (isset($_SESSION['username'])) {echo $_SESSION['username'];}  ?>
         </a>
         <div class="dropdown-menu">
-          <a class="dropdown-item" href="../tasks/logout.php">Log out</a>
+          <a class="dropdown-item" href="../tasks/logout.php">
+            <i class="fa fa-times-circle">&nbsp;</i>
+            Log out
+          </a>
         </div>
       </li>
     </ul>
