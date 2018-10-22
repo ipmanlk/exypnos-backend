@@ -9,6 +9,7 @@
   <script src="../js/jquery-3.3.1.min.js" charset="utf-8"></script>
   <script type="text/javascript" src="https://cdn.datatables.net/v/bs4/jszip-2.5.0/dt-1.10.18/b-1.5.2/b-flash-1.5.2/b-html5-1.5.2/b-print-1.5.2/r-2.2.2/datatables.min.js"></script>
   <script src="../js/bootstrap.min.js" charset="utf-8"></script>
+  <script src="../js/bootstrap-notify.min.js" charset="utf-8"></script>
 </head>
 <body>
   <?php
@@ -64,7 +65,7 @@
                 echo '<td>' .
                 '<button type="button" class="btn btn-primary" onclick="editPost(' ."'" . $row['post_id'] . "'". ')">Edit</button>'
                 .
-                '<button type="button" class="btn btn-danger ml-2" onclick="deletePost(' ."'" . $row['post_id'] . "'". ')">Delete</button>'
+                '<button type="button" class="btn btn-danger ml-2" onclick="deletePost(' ."'" . $row['post_id'] . "'". ',this)">Delete</button>'
                 . '</td>';
                 echo '</tr>';
               }
@@ -75,6 +76,34 @@
         </div>
       </div>
     </div>
+
+    <!-- confirm modal -->
+    <div class="modal fade" id="confirmModal">
+      <div class="modal-dialog">
+        <div class="modal-content">
+
+          <!-- Modal Header -->
+          <div class="modal-header">
+            <h4 class="modal-title">Confirm Delete</h4>
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+          </div>
+
+          <!-- Modal body -->
+          <div class="modal-body">
+            Do you really want to delete this post?
+          </div>
+
+          <!-- Modal footer -->
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">No</button>
+            <button id="confirmDelete" type="button" class="btn btn-danger">Yes, Delete!</button>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+
   </div>
   <script src="../js/index.js" charset="utf-8"></script>
 </body>
