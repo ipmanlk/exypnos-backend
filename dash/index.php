@@ -11,64 +11,59 @@
   require_once '../tasks/checkSession.php';
   require_once '../content/navBar.php';
   ?>
-  <div class="container-fluid mt-4">
+  <div class="container mt-4">
     <div class="row">
+      <div class="col-md-12">
+        <table class="table table-bordered">
+          <thead>
+            <tr>
+              <th>Post Title</th>
+              <th>Posted Date</th>
+              <th>Category</th>
+              <th>Author</th>
+              <th>Status</th>
+              <th>Edit</th>
+              <th>Delete</th>
+            </tr>
+          </thead>
+          <tbody>
+            <?php
+            require_once("../config/config.php");
+            if (USER_PERMISSION == 1) {
+              $result=mysqli_query($link,"SELECT post_id,uname,title,datetime,category.name AS category,post_status.name AS state FROM author,post, category,post_status WHERE post.author_id = author.author_id AND post.cat_id = category.cat_id AND post.status_id = post_status.status_id ");
+            } else {
+              $author_id = $_SESSION['author_id'];
 
-    </div>
-    <div class="row">
-      <div class="container">
-        <div class="col-md-12">
-          <table class="table table-bordered">
-            <thead>
-              <tr>
-                <th>Post Title</th>
-                <th>Posted Date</th>
-                <th>Category</th>
-                <th>Author</th>
-                <th>Action</th>
-              </tr>
-            </thead>
-            <tbody>
-              <?php
-              require_once("../config/config.php");
-              if (USER_PERMISSION == 1) {
-                $result=mysqli_query($link,"SELECT post_id,uname,title,datetime,name as category FROM author,post, category WHERE post.author_id = author.author_id AND post.cat_id = category.cat_id");
-              } else {
-                $author_id = $_SESSION['author_id'];
+              $stmt = mysqli_prepare($link, "SELECT post_id,title,datetime,uname,category.name AS category, post_status.name AS state FROM post,author,category, post_status WHERE post.author_id = ? AND post.author_id=author.author_id AND post.cat_id=category.cat_id AND post_status.status_id = post.status_id ");
 
-                $stmt = mysqli_prepare($link, "SELECT post_id,title,datetime,uname,name AS category FROM post,author,category WHERE post.author_id = ? AND post.author_id=author.author_id AND post.cat_id=category.cat_id");
+              mysqli_stmt_bind_param($stmt,'i', $author_id);
 
-                mysqli_stmt_bind_param($stmt,'i', $author_id);
+              mysqli_stmt_execute($stmt);
 
-                mysqli_stmt_execute($stmt);
+              $result = mysqli_stmt_get_result($stmt);
 
-                $result = mysqli_stmt_get_result($stmt);
+              mysqli_stmt_close($stmt);
 
-                mysqli_stmt_close($stmt);
+            }
 
-              }
-
-              while ($row=mysqli_fetch_array($result)) {
-                echo '<tr>';
-                echo '<td>' . $row['title'] . '</td>';
-                $dateTime= new DateTime($row['datetime']);
-                $dateTime->setTimezone(new DateTimeZone('Asia/Colombo'));
-                $lkDateTime =  date_format($dateTime, 'Y-m-d H:i:s');
-                echo '<td>' . $lkDateTime . '</td>';
-                echo '<td>' . $row['category'] . '</td>';
-                echo '<td>' . $row['uname'] . '</td>';
-                echo '<td>' .
-                '<button type="button" class="btn btn-primary" onclick="editPost(' ."'" . $row['post_id'] . "'". ')">Edit</button>'
-                .
-                '<button type="button" class="btn btn-danger ml-2" onclick="deletePost(' ."'" . $row['post_id'] . "'". ',this)">Delete</button>'
-                . '</td>';
-                echo '</tr>';
-              }
-              mysqli_close($link);
-              ?>
-            </tbody>
-          </table>
-        </div>
+            while ($row=mysqli_fetch_array($result)) {
+              echo '<tr>';
+              echo '<td>' . $row['title'] . '</td>';
+              $dateTime= new DateTime($row['datetime']);
+              $dateTime->setTimezone(new DateTimeZone('Asia/Colombo'));
+              $lkDateTime =  date_format($dateTime, 'Y-m-d H:i:s');
+              echo '<td>' . $lkDateTime . '</td>';
+              echo '<td>' . $row['category'] . '</td>';
+              echo '<td>' . $row['uname'] . '</td>';
+              echo '<td>' . $row['state'] . '</td>';
+              echo '<td><button type="button" class="btn btn-primary btn-sm" onclick="editPost(' ."'" . $row['post_id'] . "'". ')">Edit</button></td>';
+              echo '<td><button type="button" class="btn btn-danger ml-2 btn-sm" onclick="deletePost(' ."'" . $row['post_id'] . "'". ',this)">Delete</button></td>';
+              echo '</tr>';
+            }
+            mysqli_close($link);
+            ?>
+          </tbody>
+        </table>
       </div>
     </div>
 
