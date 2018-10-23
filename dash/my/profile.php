@@ -4,13 +4,13 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Exypnos : Dashboard</title>
-  <?php require_once '../content/head.php'; ?>
+  <?php require_once '../../content/head.php'; ?>
 </head>
 <body>
   <?php
-  require_once '../tasks/checkSession.php';
-  require_once '../content/navBar.php';
-  require_once '../config/config.php';
+  require_once '../../tasks/checkSession.php';
+  require_once '../../content/navBar.php';
+  require_once '../../config/config.php';
 
   $stmt = mysqli_prepare($link, "SELECT uname, description, a.name AS name, profile_img, email,s.name as status FROM author a, author_level s WHERE a.author_level = s.level_id AND a.author_id=?");
 
@@ -91,7 +91,7 @@
     </div>
   </div>
 
-  <script src="../js/profile.js" charset="utf-8"></script>
+  <script src="../../js/profile.js" charset="utf-8"></script>
 
 </body>
 </html>

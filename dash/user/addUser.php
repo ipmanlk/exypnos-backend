@@ -4,12 +4,12 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Exypnos : Add User</title>
-  <?php require_once '../content/head.php'; ?>
+  <?php require_once '../../content/head.php'; ?>
 </head>
 <body>
   <?php
-  require_once '../tasks/checkSession.php';
-  require_once '../content/navBar.php';
+  require_once '../../tasks/checkSession.php';
+  require_once '../../content/navBar.php';
   ?>
   <div class="container mt-4">
     <div class="row">
@@ -39,6 +39,6 @@
       </div>
     </div>
   </div>
-  <script src="../js/addUser.js" charset="utf-8"></script>
+  <script src="../../js/addUser.js" charset="utf-8"></script>
 </body>
 </html>

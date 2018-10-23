@@ -4,12 +4,12 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Exypnos : Category</title>
-  <?php require_once '../content/head.php'; ?>
+  <?php require_once '../../content/head.php'; ?>
 </head>
 <body>
   <?php
-  require_once '../tasks/checkSession.php';
-  require_once '../content/navBar.php';
+  require_once '../../tasks/checkSession.php';
+  require_once '../../content/navBar.php';
   ?>
   <div class="container-fluid mt-4">
     <div class="row">
@@ -37,7 +37,7 @@
             </thead>
             <tbody>
               <?php
-              require_once("../config/config.php");
+              require_once("../../config/config.php");
               $result=mysqli_query($link,"SELECT * FROM category");
               while ($row=mysqli_fetch_array($result)) {
                 echo '<tr>';
@@ -87,6 +87,6 @@
     </div>
 
   </div>
-  <script src="../js/category.js" charset="utf-8"></script>
+  <script src="../../js/category.js" charset="utf-8"></script>
 </body>
 </html>
