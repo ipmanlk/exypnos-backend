@@ -10,7 +10,7 @@ function editPost(postID) {
 function deletePost(postID,row) {
   $('#confirmModal').modal('show');
   $('#confirmDelete').click(function() {
-    sendRequest('../tasks/deletePost.php',{post_id:postID}, row);
+    sendRequest('../../tasks/deletePost.php',{post_id:postID}, row);
     $('#confirmModal').modal('hide');
   });
 }

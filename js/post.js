@@ -13,7 +13,7 @@ function addPost() {
   $('#addPostBtn').prop("disabled",true);
   $.ajax({
     type: 'POST',
-    url: '../tasks/addPost.php',
+    url: '../../tasks/addPost.php',
     data: $('#postForm').serialize(),
     dataType: "html",
     async: true,
@@ -34,7 +34,7 @@ function updatePost() {
   $('#updatePostBtn').prop("disabled",true);
   $.ajax({
     type: 'POST',
-    url: '../tasks/updatePost.php',
+    url: '../../tasks/updatePost.php',
     data: $('#postForm').serialize(),
     dataType: "html",
     async: true,

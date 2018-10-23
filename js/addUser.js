@@ -8,7 +8,7 @@ $(document).ready(function() {
 function addUser() {
   $.ajax({
     type: 'POST',
-    url: '../tasks/addUser.php',
+    url: '../../tasks/addUser.php',
     data: $('#addUserForm').serialize(),
     dataType: "html",
     async: true,

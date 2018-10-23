@@ -18,7 +18,7 @@ $('#saveChanges').click(function () {
     $('#saveChanges, #cancelChanges').prop("disabled",true);
     $.ajax({
       type: 'POST',
-      url: '../tasks/updateProfile.php',
+      url: '../../tasks/updateProfile.php',
       data: $('form').serialize(),
       dataType: "html",
       async: true,
