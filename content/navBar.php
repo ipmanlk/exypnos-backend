@@ -36,7 +36,7 @@
         </a>
         <div class="dropdown-menu">
           <a class="dropdown-item" href="profile.php">
-            <i class="fa fa-user-edit">&nbsp;</i>
+            <i class="fa fa-user-circle">&nbsp;</i>
             Profile
           </a>
           <a class="dropdown-item" href="../tasks/logout.php">
