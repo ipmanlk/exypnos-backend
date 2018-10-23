@@ -35,6 +35,10 @@
           <?php if (isset($_SESSION['username'])) {echo $_SESSION['username'];}  ?>
         </a>
         <div class="dropdown-menu">
+          <a class="dropdown-item" href="profile.php">
+            <i class="fa fa-user-edit">&nbsp;</i>
+            Profile
+          </a>
           <a class="dropdown-item" href="../tasks/logout.php">
             <i class="fa fa-times-circle">&nbsp;</i>
             Log out
