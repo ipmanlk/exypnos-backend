@@ -36,7 +36,7 @@
           <img class="card-img-top" src="https://www.w3schools.com/bootstrap4/img_avatar1.png" alt="Card image">
           <div class="card-body">
             <h4 class="card-title"><?php echo $name; ?></h4>
-            <p class="card-text"><?php echo $status; ?></p>
+            <p class="card-text"><?php echo $about; ?></p>
           </div>
         </div>
       </div>
