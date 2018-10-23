@@ -7,9 +7,9 @@ if (isset($_GET['id']) && isset($_GET['cat_id'])) {
   $cat_id = $_GET['cat_id'];
 
   if ($id == 0) {
-    $stmt = mysqli_prepare($link, "SELECT post_id,title,cover_img,post,card_img1,card_img2,datetime,short_des,cat_id,description as author_info, uname as author FROM post,author WHERE post_id > ? AND post.author_id=author.author_id AND cat_id=? ORDER BY post_id DESC LIMIT 5");
+    $stmt = mysqli_prepare($link, "SELECT post_id,title,cover_img,post,card_img1,card_img2,datetime,short_des,cat_id,description as author_info, uname as author FROM post,author WHERE post_id > ? AND post.author_id=author.author_id  AND post.status_id=1 AND cat_id=? ORDER BY post_id DESC LIMIT 5");
   } else {
-    $stmt = mysqli_prepare($link, "SELECT post_id,title,cover_img,post,card_img1,card_img2,datetime,short_des,cat_id,description as author_info, uname as author FROM post,author WHERE post_id < ? AND post.author_id=author.author_id AND cat_id=? ORDER BY post_id DESC LIMIT 5");
+    $stmt = mysqli_prepare($link, "SELECT post_id,title,cover_img,post,card_img1,card_img2,datetime,short_des,cat_id,description as author_info, uname as author FROM post,author WHERE post_id < ? AND post.author_id=author.author_id  AND post.status_id=1 AND cat_id=? ORDER BY post_id DESC LIMIT 5");
   }
   mysqli_stmt_bind_param($stmt, "ii", $id, $cat_id);
   mysqli_stmt_execute($stmt);

@@ -14,14 +14,14 @@
 
   $author_id = $_SESSION['author_id'];
   if (isset($_GET['action']) && !empty($_GET['action'])) {
-    $title = $short_des  = $post = $cover_img = $card_img1 = $card_img2 = $post_id = $cat_id = "";
+    $title = $short_des  = $post = $cover_img = $card_img1 = $card_img2 = $post_id = $cat_id = $status_id="";
     $action = $_GET['action'];
     if ($action == 'edit') {
       if (isset($_GET['post_id']) && !empty($_GET['post_id'])) {
         // get post data related to post id
         $post_id = trim($_GET['post_id']);
 
-        $stmt = mysqli_prepare($link, "SELECT author_id, title,cover_img,post,card_img1,card_img2,author_id,short_des,cat_id FROM post WHERE post_id=?");
+        $stmt = mysqli_prepare($link, "SELECT author_id, title,cover_img,post,card_img1,card_img2,author_id,short_des,cat_id,status_id FROM post WHERE post_id=?");
 
         mysqli_stmt_bind_param($stmt, "s", $post_id);
         mysqli_stmt_execute($stmt);
@@ -39,6 +39,8 @@
         $card_img1 = $row['card_img1'];
         $card_img2 = $row['card_img2'];
         $cat_id = $row['cat_id'];
+        $status_id = $row['status_id'];
+
       }
     }
   } else {
@@ -77,7 +79,6 @@
                     }
                   }
                   mysqli_free_result($result);
-                  mysqli_close($link);
                   ?>
                 </select>
               </div>
@@ -104,6 +105,27 @@
               <div class="form-group">
                 <label for="authorid">Author:</label>
                 <input type="text" class="form-control" id="authorid" name="authorid" maxlength="60"  value=<?php echo '"'. $author_id .'"'; ?>>
+              </div>
+            </div>
+          </div>
+          <div class="card bg-light text-dark">
+            <div class="card-body">
+              <div class="form-group">
+                <label for="authorid">Status:</label>
+                <select class="form-control" id="statusid" name="statusid">
+                  <?php
+                  $result = mysqli_query($link, "SELECT * FROM post_status");
+                  while ($row = mysqli_fetch_assoc($result)) {
+                    if ($row['status_id'] == $status_id) {
+                      echo '<option value="' . $row['status_id'] . '" selected>' . $row['name'] . '</option>';
+                    } else {
+                      echo '<option value="' . $row['status_id'] . '">' . $row['name'] . '</option>';
+                    }
+                  }
+                  mysqli_free_result($result);
+                  mysqli_close($link);
+                  ?>
+                </select>
               </div>
             </div>
           </div>
