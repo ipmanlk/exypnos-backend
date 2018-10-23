@@ -17,11 +17,19 @@ foreach($required as $field) {
     $values[$field] = $_POST[$field];
   }
 }
+if (USER_PERMISSION == 1) {
+  $stmt = mysqli_prepare($link, "DELETE FROM post WHERE post_id=?");
+  mysqli_stmt_bind_param($stmt,'i', $post_id);
 
-$stmt = mysqli_prepare($link, "DELETE FROM post WHERE post_id=?");
-mysqli_stmt_bind_param($stmt,'s', $cat_id);
+  $post_id = trim($values['post_id']);
 
-$cat_id = trim($values['post_id']);
+} else {
+  $stmt = mysqli_prepare($link, "DELETE FROM post WHERE post_id=? AND author_id=?");
+  mysqli_stmt_bind_param($stmt,'ii', $post_id, $author_id);
+
+  $post_id = trim($values['post_id']);
+  $author_id = $_SESSION['author_id'];
+}
 
 if(mysqli_stmt_execute($stmt)) {
   echo "1";
