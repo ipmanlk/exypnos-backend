@@ -42,14 +42,22 @@
               echo '<td>' . $row['category'] . '</td>';
               echo '<td>' . $row['uname'] . '</td>';
               echo '<td>' . $row['state'] . '</td>';
-              echo '<td>'
-              if ($_SESSION['author_id'] == $row['author_id']) {
+              echo '<td>';
+              if (USER_PERMISSION == 1) {
                 echo '<button type="button" class="btn btn-primary btn-sm" onclick="editPost(' ."'" . $row['post_id'] . "'". ')">Edit</button>';
+              } else {
+                if ($_SESSION['author_id'] == $row['author_id']) {
+                  echo '<button type="button" class="btn btn-primary btn-sm" onclick="editPost(' ."'" . $row['post_id'] . "'". ')">Edit</button>';
+                }
               }
               echo '</td>';
-              echo '<td>'
-              if ($_SESSION['author_id'] == $row['author_id']) {
+              echo '<td>';
+              if (USER_PERMISSION == 1) {
                 echo '<button type="button" class="btn btn-danger ml-2 btn-sm" onclick="deletePost(' ."'" . $row['post_id'] . "'". ',this)">Delete</button>';
+              } else {
+                if ($_SESSION['author_id'] == $row['author_id']) {
+                  echo '<button type="button" class="btn btn-danger ml-2 btn-sm" onclick="deletePost(' ."'" . $row['post_id'] . "'". ',this)">Delete</button>';
+                }
               }
               echo '</td>';
               echo '</tr>';
