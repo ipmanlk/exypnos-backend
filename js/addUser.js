@@ -1,3 +1,7 @@
+const dataTable = $('.table').DataTable( {
+  responsive: true
+});
+
 $(document).ready(function() {
   $("#addUserForm").submit(function(e) {
     e.preventDefault();

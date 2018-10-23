@@ -13,7 +13,30 @@
   ?>
   <div class="container mt-4">
     <div class="row">
-      <div class="col-md-12">
+      <div class="col-md-6">
+        <table class="table table-bordered">
+          <thead>
+            <tr>
+              <th>User</th>
+              <th>Status</th>
+            </tr>
+          </thead>
+          <tbody>
+            <?php
+            require_once("../../config/config.php");
+            $result=mysqli_query($link,"SELECT uname, l.name FROM author a, author_level l WHERE a.author_level=l.level_id");
+            while ($row=mysqli_fetch_array($result)) {
+              echo '<tr>';
+              echo '<td>' . $row['uname'] . '</td>';
+              echo '<td>' . $row['name'] . '</td>';
+              echo '</tr>';
+            }
+            mysqli_close($link);
+            ?>
+          </tbody>
+        </table>
+      </div>
+      <div class="col-md-6">
         <form id="addUserForm" method="post" class="mb-4">
           <div class="card bg-light text-dark">
             <div class="card-body">
