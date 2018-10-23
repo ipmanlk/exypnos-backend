@@ -18,14 +18,14 @@ if (isset($_SESSION['username']) || !empty($_SESSION['username'])) {
   <div class="container py-5">
     <div class="row">
       <div class="col-md-12">
-        <h2 class="text-center text-white mb-4">Exypnos</h2>
         <div class="row">
           <div class="col-md-6 mx-auto">
-
             <!-- form card login -->
             <div class="card rounded-0">
               <div class="card-header">
-                <h3 class="mb-0">Login</h3>
+                <div class="text-center">
+                  <img src="/img/logo.png" width="150px">
+                </div>
               </div>
               <div class="card-body">
                 <form class="form" role="form" autocomplete="off" id="formLogin" novalidate="" method="POST">
