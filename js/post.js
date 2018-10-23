@@ -10,6 +10,7 @@ $('#post').bind('input propertychange', function() {
 });
 
 function addPost() {
+  $('#addPostBtn').prop("disabled",true);
   $.ajax({
     type: 'POST',
     url: '../tasks/addPost.php',
@@ -18,17 +19,19 @@ function addPost() {
     async: true,
     success: function(msg) {
       if (msg == 1) {
-        alert("Post added!");
+        showOutput("Post added!");
       } else if (msg == 2) {
-        alert("Inputs are missing!");
+        showOutput("Inputs are missing!");
       } else {
-        alert("Data insert error!");
+        showOutput("Data insert error!");
       }
+
     }
   });
 }
 
 function updatePost() {
+  $('#updatePostBtn').prop("disabled",true);
   $.ajax({
     type: 'POST',
     url: '../tasks/updatePost.php',
@@ -36,13 +39,21 @@ function updatePost() {
     dataType: "html",
     async: true,
     success: function(msg) {
+      var output;
       if (msg == 1) {
-        alert("Post updated!");
+        output = "Post updated!";
       } else if (msg == 2) {
-        alert("Inputs are missing!");
+        output = "Inputs are missing!";
       } else {
-        alert("Data update error!");
+        output = "Data update error!";
       }
+      showOutput(output);
     }
   });
+}
+
+function showOutput(msg) {
+  $('#updatePostBtn').prop("disabled",false);
+  $('#addPostBtn').prop("disabled",false);
+  $.notify(msg);
 }
