@@ -66,7 +66,7 @@
                 <input type="text" class="form-control" id="title" name="title" maxlength="70" value=<?php echo '"'. $title .'"'; ?> autofocus>
               </div>
               <div class="form-group">
-                <label for="title">Short Description:</label>
+                <label for="shortdes">Short Description:</label>
                 <input type="text" class="form-control" id="shortdes" name="shortdes" maxlength="100" value=<?php echo '"'. $short_des .'"'; ?>>
               </div>
               <div class="form-group">
