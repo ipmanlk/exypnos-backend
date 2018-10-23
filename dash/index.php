@@ -31,7 +31,7 @@
             <tbody>
               <?php
               require_once("../config/config.php");
-              if ($permission == 1) {
+              if (USER_PERMISSION == 1) {
                 $result=mysqli_query($link,"SELECT post_id,uname,title,datetime,name as category FROM author,post, category WHERE post.author_id = author.author_id AND post.cat_id = category.cat_id");
               } else {
                 $author_id = $_SESSION['author_id'];

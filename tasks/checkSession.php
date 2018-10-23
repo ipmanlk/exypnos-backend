@@ -5,6 +5,5 @@ if (!isset($_SESSION['username']) || empty($_SESSION['username'])) {
   exit;
 }
 
-$permission = $_SESSION['p'];
-
+define('USER_PERMISSION', $_SESSION['p']);
 ?>

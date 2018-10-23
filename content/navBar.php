@@ -23,9 +23,9 @@
         </div>
       </li>
 
-      <?php if ($permission == 1) {echo '<li class="nav-item dropdown"><a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown"><i class="fa fa-users">&nbsp;</i>Users</a> <div class="dropdown-menu"><a class="dropdown-item" href="./addUser.php"><i class="fa fa-user-plus">&nbsp;</i>Add User</a></div></li>';}?>
+      <?php if (USER_PERMISSION == 1) {echo '<li class="nav-item dropdown"><a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown"><i class="fa fa-users">&nbsp;</i>Users</a> <div class="dropdown-menu"><a class="dropdown-item" href="./addUser.php"><i class="fa fa-user-plus">&nbsp;</i>Add User</a></div></li>';}?>
 
-      <?php if ($permission == 1) {echo '<li class="nav-item"><a class="nav-link" href="category.php"><i class="fa fa-tags">&nbsp;</i>Category</a></li>';}?>
+      <?php if (USER_PERMISSION == 1) {echo '<li class="nav-item"><a class="nav-link" href="category.php"><i class="fa fa-tags">&nbsp;</i>Category</a></li>';}?>
 
     </ul>
     <ul class="navbar-nav  ml-auto">
