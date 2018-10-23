@@ -21,9 +21,16 @@
         // get post data related to post id
         $post_id = trim($_GET['post_id']);
 
-        $stmt = mysqli_prepare($link, "SELECT author_id, title,cover_img,post,card_img1,card_img2,author_id,short_des,cat_id,status_id FROM post WHERE post_id=?");
+        if (USER_PERMISSION == 1 || USER_PERMISSION == 2) {
+          $stmt = mysqli_prepare($link, "SELECT author_id, title,cover_img,post,card_img1,card_img2,author_id,short_des,cat_id,status_id FROM post WHERE post_id=?");
 
-        mysqli_stmt_bind_param($stmt, "s", $post_id);
+          mysqli_stmt_bind_param($stmt, "i", $post_id);
+        } else {
+          $stmt = mysqli_prepare($link, "SELECT author_id, title,cover_img,post,card_img1,card_img2,author_id,short_des,cat_id,status_id FROM post WHERE post_id=? AND author_id=?");
+
+          mysqli_stmt_bind_param($stmt, "ii", $post_id, $_SESSION['author_id']);
+        }
+
         mysqli_stmt_execute($stmt);
 
         // put post data in $row array
