@@ -16,9 +16,9 @@
             <i class="fa fa-plus-square">&nbsp;</i>
             Add Post
           </a>
-          <a class="dropdown-item" href="index.php">
+          <a class="dropdown-item" href="postList.php">
             <i class="fa fa-edit">&nbsp;</i>
-            Edit Posts
+            Post List
           </a>
         </div>
       </li>
