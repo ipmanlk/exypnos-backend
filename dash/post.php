@@ -108,7 +108,9 @@
               </div>
             </div>
           </div>
-          <div class="card bg-light text-dark">
+          <div class="card bg-light text-dark " <?php if (USER_PERMISSION == 3) {
+            echo 'style="display:none;"';
+          } ?>>
             <div class="card-body">
               <div class="form-group">
                 <label for="authorid">Status:</label>
