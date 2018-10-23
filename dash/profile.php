@@ -75,6 +75,10 @@
                   <label for="pwd">Password:</label>
                   <input type="password" class="form-control" id="pwd" name="pwd" disabled>
                 </div>
+                <div class="form-group">
+                  <label for="pwd2">Confirm Password:</label>
+                  <input type="password" class="form-control" id="pwd2" name="pwd2" disabled>
+                </div>
               </form>
 
             </span>
@@ -87,60 +91,7 @@
     </div>
   </div>
 
-  <script>
-  $(document).ready(function() {
-    $("form").submit(function(e) {
-      e.preventDefault();
-    });
-  });
+  <script src="../js/profile.js" charset="utf-8"></script>
 
-  $('#editProfile').click(function () {
-    $('#email,#uname,#name,#email,#about,#pwd,#profileimg').prop("disabled",false);
-    $('#editProfile').hide();
-    $('#saveChanges').fadeIn();
-    $('#cancelChanges').fadeIn();
-  });
-
-  $('#saveChanges').click(function () {
-    $.ajax({
-      type: 'POST',
-      url: '../tasks/updateProfile.php',
-      data: $('form').serialize(),
-      dataType: "html",
-      async: true,
-      success: function(msg) {
-        switch (msg) {
-          case "1":
-          showOutput("Profile updated!");
-          $('#email,#uname,#name,#email,#about,#pwd,#profileimg').prop("disabled",true);
-          $('#saveChanges').hide();
-          $('#cancelChanges').hide();
-          $('#editProfile').fadeIn();
-          break;
-          case "2":
-          showOutput("Profile update failed!" ,"danger");
-          break;
-          case "3":
-          showOutput("Please fill all fileds including password!" ,"danger");
-          break;
-          default:
-
-        }
-      }
-    });
-  });
-
-  $('#cancelChanges').click(function () {
-    window.location = "profile.php";
-  });
-
-  function showOutput(msg, type) {
-    $.notify({
-      message: msg
-    },{
-      type: type
-    })
-  }
-  </script>
 </body>
 </html>
