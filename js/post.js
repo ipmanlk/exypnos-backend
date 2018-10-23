@@ -109,6 +109,6 @@ function validateURL(textval) {
 }
 
 function validateString(str) {
-  var pattern = /^[a-zA-Z0-9!@#$().]*$/;
-  return pattern.test(str);
+  var pattern = /^[<>[] ]*$/;
+  return !(pattern.test(str));
 }
