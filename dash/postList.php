@@ -97,6 +97,6 @@
 
 
   </div>
-  <script src="../js/index.js" charset="utf-8"></script>
+  <script src="../js/postList.js" charset="utf-8"></script>
 </body>
 </html>
