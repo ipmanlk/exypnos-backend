@@ -27,7 +27,7 @@ if (isset($_GET['r']) && !empty($_GET['r'])) {
     $suser_id = (int) ($result['suser_id']);
     $suser_id = $suser_id + 1;
 
-    $stmt = mysqli_prepare($link, "INSERT INTO shadow_user VALUES(?,?)");
+    $stmt = mysqli_prepare($link, "INSERT INTO shadow_user(suser_id, code) VALUES(?,?)");
 
     mysqli_stmt_bind_param($stmt,'is', $suser_id, $code);
 
