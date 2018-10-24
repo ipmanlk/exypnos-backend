@@ -1,3 +1,7 @@
+const dataTable = $('.table').DataTable( {
+  responsive: true
+});
+
 $(document).ready(function() {
   $("#addUserForm").submit(function(e) {
     e.preventDefault();
@@ -8,7 +12,7 @@ $(document).ready(function() {
 function addUser() {
   $.ajax({
     type: 'POST',
-    url: '../tasks/addUser.php',
+    url: '../../tasks/addUser.php',
     data: $('#addUserForm').serialize(),
     dataType: "html",
     async: true,

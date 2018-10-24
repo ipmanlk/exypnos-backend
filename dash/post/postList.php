@@ -4,12 +4,12 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Exypnos : Dashboard</title>
-  <?php require_once '../content/head.php'; ?>
+  <?php require_once '../../content/head.php'; ?>
 </head>
 <body>
   <?php
-  require_once '../tasks/checkSession.php';
-  require_once '../content/navBar.php';
+  require_once '../../tasks/checkSession.php';
+  require_once '../../content/navBar.php';
   ?>
   <div class="container mt-4">
     <div class="row">
@@ -28,7 +28,7 @@
           </thead>
           <tbody>
             <?php
-            require_once("../config/config.php");
+            require_once("../../config/config.php");
 
             $result=mysqli_query($link,"SELECT post_id,uname,title,datetime,category.name AS category,post_status.name AS state, post.author_id AS author_id FROM author,post, category,post_status WHERE post.author_id = author.author_id AND post.cat_id = category.cat_id AND post.status_id = post_status.status_id ");
 
@@ -97,6 +97,6 @@
 
 
   </div>
-  <script src="../js/postList.js" charset="utf-8"></script>
+  <script src="../../js/postList.js" charset="utf-8"></script>
 </body>
 </html>

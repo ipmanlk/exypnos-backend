@@ -4,13 +4,13 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Exypnos : Dashboard</title>
-  <?php require_once '../content/head.php'; ?>
+  <?php require_once '../../content/head.php'; ?>
 </head>
 <body>
   <?php
-  require_once '../tasks/checkSession.php';
-  require_once '../content/navBar.php';
-  require_once '../config/config.php';
+  require_once '../../tasks/checkSession.php';
+  require_once '../../content/navBar.php';
+  require_once '../../config/config.php';
 
   $author_id = $_SESSION['author_id'];
   if (isset($_GET['action']) && !empty($_GET['action'])) {
@@ -66,7 +66,7 @@
                 <input type="text" class="form-control" id="title" name="title" maxlength="70" value=<?php echo '"'. $title .'"'; ?> autofocus>
               </div>
               <div class="form-group">
-                <label for="title">Short Description:</label>
+                <label for="shortdes">Short Description:</label>
                 <input type="text" class="form-control" id="shortdes" name="shortdes" maxlength="100" value=<?php echo '"'. $short_des .'"'; ?>>
               </div>
               <div class="form-group">
@@ -169,6 +169,6 @@
       </div>
     </div>
   </div>
-  <script src="../js/post.js" charset="utf-8"></script>
+  <script src="../../js/post.js" charset="utf-8"></script>
 </body>
 </html>

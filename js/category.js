@@ -30,20 +30,20 @@ function editCat() {
     cat_id: selectedCatID,
     cat_name: category
   }
-  var url = '../tasks/updateCategory.php';
+  var url = '../../tasks/updateCategory.php';
   sendRequest(url, data);
 }
 
 function deleteCat(catID) {
   var data = {cat_id: catID}
-  var url = '../tasks/deleteCategory.php';
+  var url = '../../tasks/deleteCategory.php';
   sendRequest(url, data);
 }
 
 function addCat() {
   var category = $('#category').val();
   var data = {cat_name: category};
-  var url = '../tasks/addCategory.php';
+  var url = '../../tasks/addCategory.php';
   sendRequest(url, data);
 }
 
@@ -75,13 +75,13 @@ function hideModal() {
 function showOutput(url, msg) {
   var type,result;
   switch (url) {
-    case '../tasks/addCategory.php':
+    case '../../tasks/addCategory.php':
     type = "Add Category";
     break;
-    case '../tasks/updateCategory.php':
+    case '../../tasks/updateCategory.php':
     type = "Edit Category";
     break;
-    case '../tasks/deleteCategory.php':
+    case '../../tasks/deleteCategory.php':
     type = "Delete Category";
     break;
   }
@@ -98,7 +98,7 @@ function showOutput(url, msg) {
 
 function getCategoryData() {
   dataTable.clear();
-  $.get("../tasks/getCategory.php" , function(data) {
+  $.get("../../tasks/getCategory.php" , function(data) {
     const catData = JSON.parse(data);
     for (item in catData) {
       dataTable.row.add([
