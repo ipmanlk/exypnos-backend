@@ -68,7 +68,7 @@ function showOutput(msg, type) {
   })
 }
 
-$("input[type=text]").on("change paste keyup", function() {
+$("input[type=text]").on("change paste", function() {
   var elementID = $(this).attr('id');
   changeHandler(elementID);
 });
