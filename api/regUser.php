@@ -6,7 +6,7 @@ if (isset($_GET['r']) && !empty($_GET['r'])) {
   $code = substr($hash, 0, 20);
 
   // check if device is already registered
-  $stmt = mysqli_prepare($link, "SELECT code FROM shadow_user WHERE code LIKE ?");
+  $stmt = mysqli_prepare($link, "SELECT code FROM shadow_user WHERE code=?");
   mysqli_stmt_bind_param($stmt,'s', $code);
   $result = mysqli_stmt_get_result($stmt);
   mysqli_stmt_close($stmt);
