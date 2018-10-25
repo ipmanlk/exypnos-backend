@@ -6,7 +6,7 @@ $(document).ready(function() {
   // init summer note
   $('#post').summernote({
     tabsize: 2,
-    height: 200,
+    height: 280,
     callbacks: {
       onChange: function(contents) {
         $('#preview').html(contents);
