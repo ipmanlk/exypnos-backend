@@ -2,12 +2,18 @@ $(document).ready(function() {
   $("#postForm").submit(function(e) {
     e.preventDefault();
   });
-} );
 
-// Post content preview
-$('#post').bind('input propertychange', function() {
-  $('#preview').html($('#post').val());
-});
+  // init summer note
+  $('#post').summernote({
+    tabsize: 2,
+    height: 200,
+    callbacks: {
+      onChange: function(contents) {
+        $('#preview').html(contents);
+      }
+    }
+  });
+} );
 
 function addPost() {
   $('#addPostBtn').prop("disabled",true);
