@@ -12,6 +12,12 @@
   require_once '../../content/navBar.php';
   require_once '../../config/config.php';
 
+  header("Expires: Tue, 01 Jan 2000 00:00:00 GMT");
+  header("Last-Modified: " . gmdate("D, d M Y H:i:s") . " GMT");
+  header("Cache-Control: no-store, no-cache, must-revalidate, max-age=0");
+  header("Cache-Control: post-check=0, pre-check=0", false);
+  header("Pragma: no-cache");
+
   $stmt = mysqli_prepare($link, "SELECT uname, description, a.name AS name, profile_img, email,s.name as status FROM author a, author_level s WHERE a.author_level = s.level_id AND a.author_id=?");
 
   mysqli_stmt_bind_param($stmt, "i", $_SESSION['author_id']);
