@@ -36,7 +36,7 @@ mysqli_stmt_execute($stmt);
 
 $result = mysqli_fetch_assoc(mysqli_stmt_get_result($stmt));
 
-echo (json_encode($result));
+echo ($result['user_like']);
 
 mysqli_stmt_close($stmt);
 
