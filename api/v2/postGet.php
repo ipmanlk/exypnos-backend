@@ -9,12 +9,8 @@ if (isset($_GET['id'])) {
   mysqli_stmt_close($stmt);
   mysqli_close($link);
 
-  $postData = array();
+  $row = mysqli_fetch_assoc($result);
 
-  while ($row = mysqli_fetch_assoc($result)) {
-    $postData[] = $row;
-  }
-
-  echo (json_encode($postData));
+  echo (json_encode($row));
 }
 ?>
