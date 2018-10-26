@@ -48,7 +48,6 @@ if ($_GET['s']) {
   }
 
   if (isset($_GET['id'])  && isset($_GET['p_list'])) {
-    echo "string";
     // get posts
     $id = trim($_GET['id']);
     $data = file_get_contents('https://exypnos.navinda.xyz/api/v2/postsList.php?id=' . $id);
