@@ -6,12 +6,40 @@ if ($_GET['s']) {
   }
 
   if (isset($_GET['r'])) {
+    // register user
     $reg = trim($_GET['r']);
     $data = file_get_contents('https://exypnos.navinda.xyz/api/userAdd.php?r=' . $reg);
     echo $data;
   }
 
+  if (isset($_GET['lke_a'])) {
+    //like add
+    $id = $_GET['post_id'];
+    $suser_code = $_GET['suser_code'];
+    $data = file_get_contents('https://exypnos.navinda.xyz/api/likeAdd.php?post_id=' . $id . '&suser_code=' . $suser_code);
+    echo $data;
+    exit();
+  }
+
+  if (isset($_GET['lke_g'])) {
+    // like get
+    $id = trim($_GET['post_id']);
+    $data = file_get_contents('https://exypnos.navinda.xyz/api/likeGet.php?post_id=' . $id);
+    echo $data;
+    exit();
+  }
+
+  if (isset($_GET['lke_c'])) {
+    // like check
+    $id = $_GET['post_id'];
+    $suser_code = $_GET['suser_code'];
+    $data = file_get_contents('https://exypnos.navinda.xyz/api/likeCheck.php?post_id=' . $id . '&suser_code=' . $suser_code);
+    echo $data;
+    exit();
+  }
+
   if (isset($_GET['id']) && isset($_GET['cat_id'])) {
+    // get posts by cat
     $id = trim($_GET['id']);
     $cat_id = trim($_GET['cat_id']);
     $data = file_get_contents('https://exypnos.navinda.xyz/api/postsByCat.php?id=' . $id . "&cat_id=" . $cat_id);
@@ -19,12 +47,15 @@ if ($_GET['s']) {
     exit();
   }
   if (isset($_GET['id'])) {
+    // get posts
     $id = trim($_GET['id']);
     $data = file_get_contents('https://exypnos.navinda.xyz/api/posts.php?id=' . $id);
     echo $data;
     exit();
   }
+
   if (isset($_GET['sp'])) {
+    // get categroies
     $id = trim($_GET['id']);
     $data = file_get_contents('https://exypnos.navinda.xyz/api/catsGet.php');
     echo $data;
