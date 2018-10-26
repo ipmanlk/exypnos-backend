@@ -9,7 +9,7 @@ foreach($required as $field) {
   if (empty($_GET[$field]) || !isset($_GET[$field])) {
     $error = true;
     echo "2";
-    break;
+    exit();
   } else {
     $values[$field] = $_GET[$field];
   }

@@ -11,7 +11,7 @@ foreach($required as $field) {
   if (empty($_POST[$field]) || !isset($_POST[$field])) {
     $error = true;
     echo "2";
-    break;
+    exit();
   } else {
     $values[$field] = $_POST[$field];
   }
