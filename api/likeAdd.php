@@ -32,7 +32,11 @@ $suser_id = $result['suser_id'];
 
 $post_Id = trim($values['post_id']);
 
-mysqli_stmt_execute($stmt);
+if (mysqli_stmt_execute($stmt)) {
+  echo "1";
+} else {
+  echo "2";
+}
 
 mysqli_stmt_close($stmt);
 
