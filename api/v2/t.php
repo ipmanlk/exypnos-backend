@@ -12,6 +12,33 @@ if ($_GET['s']) {
     echo $data;
   }
 
+  if (isset($_GET['fav_a'])) {
+    //fav add
+    $id = $_GET['post_id'];
+    $suser_code = $_GET['suser_code'];
+    $data = file_get_contents('https://exypnos.navinda.xyz/api/v2/favAdd.php?post_id=' . $id . '&suser_code=' . $suser_code);
+    echo $data;
+    exit();
+  }
+
+  if (isset($_GET['fav_g'])) {
+    //favs get
+    $suser_code = $_GET['suser_code'];
+    $data = file_get_contents('https://exypnos.navinda.xyz/api/v2/favsGet.php?suser_code=' . $suser_code);
+    echo $data;
+    exit();
+  }
+
+  if (isset($_GET['fav_d'])) {
+    //fav delete
+    $id = $_GET['post_id'];
+    $suser_code = $_GET['suser_code'];
+    $data = file_get_contents('https://exypnos.navinda.xyz/api/v2/favDel.php?post_id=' . $id . '&suser_code=' . $suser_code);
+    echo $data;
+    exit();
+  }
+
+
   if (isset($_GET['lke_a'])) {
     //like add
     $id = $_GET['post_id'];
