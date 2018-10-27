@@ -6,7 +6,7 @@ if (isset($_GET['r']) && !empty($_GET['r'])) {
   $code = substr($hash, 0, 20);
 
   // check if device is already registered
-  $stmt = mysqli_prepare($link, "SELECT code FROM shadow_user WHERE code=?");
+  $stmt = mysqli_prepare($link, "SELECT code,suser_id FROM shadow_user WHERE code=?");
   mysqli_stmt_bind_param($stmt,'s', $code);
   mysqli_stmt_execute($stmt);
   $result = mysqli_stmt_get_result($stmt);
@@ -16,6 +16,15 @@ if (isset($_GET['r']) && !empty($_GET['r'])) {
   if (mysqli_num_rows($result) == 1) {
     // show registered code
     echo $code;
+
+    // update user log
+    $result = mysqli_fetch_assoc($result);
+    $suser_id = $result['suser_id'];
+    $stmt = mysqli_prepare($link, "INSERT INTO shadow_user_log(suser_id) VALUES(?)");
+    mysqli_stmt_bind_param($stmt,'i',$suser_id);
+    mysqli_stmt_execute($stmt);
+    mysqli_stmt_close($stmt);
+
   } else {
     // generate new code
     $stmt = mysqli_prepare($link, "SELECT suser_id FROM shadow_user ORDER BY suser_id DESC LIMIT 1");
