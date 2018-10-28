@@ -26,11 +26,11 @@ mysqli_stmt_close($stmt);
 
 $stmt = mysqli_prepare($link, "INSERT INTO shadow_user_favs(suser_id,post_id) values (?,?)");
 
-mysqli_stmt_bind_param($stmt,'ii', $suser_id, $post_Id);
+mysqli_stmt_bind_param($stmt,'ii', $suser_id, $post_id);
 
 $suser_id = $result['suser_id'];
 
-$post_Id = trim($values['post_id']);
+$post_id = trim($values['post_id']);
 
 if (mysqli_stmt_execute($stmt)) {
   echo "1";
