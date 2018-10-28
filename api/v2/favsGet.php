@@ -31,7 +31,7 @@ $result = mysqli_query($link, "SELECT post_id,title,cover_img,datetime,short_des
 $favData = array();
 
 while ($row = mysqli_fetch_array($result)) {
-  $favData[] = $row;
+  $favData[($row['post_id'])] = $row;
 }
 
 echo (json_encode($favData));
