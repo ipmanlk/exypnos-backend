@@ -12,6 +12,13 @@ if ($_GET['s']) {
     echo $data;
   }
 
+  if (isset($_GET['up_c'])) {
+    //check version
+    $data = file_get_contents('https://exypnos.navinda.xyz/api/v2/updateCheck.php');
+    echo $data;
+    exit();
+  }
+
   if (isset($_GET['fav_a'])) {
     //fav add
     $id = $_GET['post_id'];
