@@ -19,7 +19,7 @@ if ($_POST['s']) {
     exit();
   }
 
-  if (isset($_POST['fav_a'])) {
+  if (isset($_POST['cmd']) && $_POST['cmd'] == "fav_a") {
     //fav add
     $id = $_POST['post_id'];
     $suser_code = $_POST['suser_code'];
@@ -28,7 +28,7 @@ if ($_POST['s']) {
     exit();
   }
 
-  if (isset($_POST['fav_g'])) {
+  if (isset($_POST['cmd']) && $_POST['cmd'] == "fav_g") {
     //favs get
     $suser_code = $_POST['suser_code'];
     $data = file_get_contents('https://exypnos.navinda.xyz/api/v2/favsGet.php?suser_code=' . $suser_code);
@@ -36,7 +36,7 @@ if ($_POST['s']) {
     exit();
   }
 
-  if (isset($_POST['fav_d'])) {
+  if (isset($_POST['cmd']) && $_POST['cmd'] == "fav_d") {
     //fav delete
     $id = $_POST['post_id'];
     $suser_code = $_POST['suser_code'];
