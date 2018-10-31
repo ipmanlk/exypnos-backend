@@ -72,26 +72,26 @@ if ($_POST['s']) {
     exit();
   }
 
-  if (isset($_POST['id']) && isset($_POST['cat_id']) && isset($_POST['p_list'])) {
+  if (isset($_POST['post_id']) && isset($_POST['cat_id']) && isset($_POST['p_list'])) {
     // get posts by cat
-    $id = trim($_POST['id']);
+    $id = trim($_POST['post_id']);
     $cat_id = trim($_POST['cat_id']);
     $data = file_get_contents('https://exypnos.navinda.xyz/api/v2/postsByCat.php?id=' . $id . "&cat_id=" . $cat_id);
     echo $data;
     exit();
   }
 
-  if (isset($_POST['id'])  && isset($_POST['p_list'])) {
+  if (isset($_POST['post_id'])  && isset($_POST['p_list'])) {
     // get posts
-    $id = trim($_POST['id']);
+    $id = trim($_POST['post_id']);
     $data = file_get_contents('https://exypnos.navinda.xyz/api/v2/postsList.php?id=' . $id);
     echo $data;
     exit();
   }
 
-  if (isset($_POST['id'])  && isset($_POST['p_get'])) {
+  if (isset($_POST['post_id'])  && isset($_POST['p_get'])) {
     // get posts
-    $id = trim($_POST['id']);
+    $id = trim($_POST['post_id']);
     $data = file_get_contents('https://exypnos.navinda.xyz/api/v2/postGet.php?id=' . $id);
     echo $data;
     exit();
