@@ -9,9 +9,7 @@ $(document).ready(function() {
     height: 280,
     toolbar: [
       ['Insert', ['picture', 'link', 'video']],
-      ['Font',['fontsize']],
       ['style', ['bold', 'italic', 'underline', 'clear']],
-      ['para', ['paragraph']],
       ['color', ['color']],
       ['list', ['ul', 'ol']],
       ['Misc', ['undo', 'redo', 'codeview']],
