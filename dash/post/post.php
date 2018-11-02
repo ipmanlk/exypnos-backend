@@ -101,15 +101,15 @@
             <div class="card-body">
               <div class="form-group">
                 <label for="coverimg">Cover Image URL:</label>
-                <input type="text" class="form-control" id="coverimg" name="coverimg" maxlength="60" value=<?php echo '"'. $cover_img .'"'; ?>>
+                <input type="text" class="form-control" id="coverimg" name="coverimg" maxlength="1000" value=<?php echo '"'. $cover_img .'"'; ?>>
               </div>
               <div class="form-group">
                 <label for="cardimg1">Card Image 1 URL:</label>
-                <input type="text" class="form-control" id="cardimg1" name="cardimg1" maxlength="60" value=<?php echo '"'. $card_img1 .'"'; ?>>
+                <input type="text" class="form-control" id="cardimg1" name="cardimg1" maxlength="1000" value=<?php echo '"'. $card_img1 .'"'; ?>>
               </div>
               <div class="form-group">
                 <label for="cardimg2">Card Image 2 URL:</label>
-                <input type="text" class="form-control" id="cardimg2" name="cardimg2" maxlength="60"  value=<?php echo '"'. $card_img2 .'"'; ?>>
+                <input type="text" class="form-control" id="cardimg2" name="cardimg2" maxlength="1000"  value=<?php echo '"'. $card_img2 .'"'; ?>>
               </div>
             </div>
           </div>
@@ -157,7 +157,7 @@
           if ($action == 'edit') {
             echo '<button id="updatePostBtn" onclick="updatePost();"  class="btn btn-primary btn-block">Update Post</button>';
           } else {
-            echo '<button id="addPostBtn" onclick="addPost();" class="btn btn-primary btn-block">Add Post</button>';
+            echo '<button id="addPostBtn" onclick="addPostHandler();" class="btn btn-primary btn-block">Add Post</button>';
           }
           ?>
           <button type="reset" class="btn btn-danger btn-block">Reset</button>

@@ -45,6 +45,46 @@ function addPost() {
   });
 }
 
+// handle url shortner details
+function addPostHandler(elementID="coverimg") {
+  if (elementID == "coverimg") {
+      urlShortner($('#coverimg').val(), "coverimg");
+  } else if (elementID == "cardimg1") {
+    urlShortner($('#cardimg1').val(), "cardimg1");
+  } else if (elementID == "cardimg2") {
+    urlShortner($('#cardimg2').val(), "cardimg2");
+  } else {
+    addPost();
+  }
+}
+
+function urlShortner(longUrl,elementID) {
+  $.ajax({
+    type: 'POST',
+    data: {
+      access_token:"3241ee7565a888422d82314399bc09e0550e0c48",
+      longUrl:longUrl,
+      format:"json"
+    },
+    url: "https://api-ssl.bitly.com/v3/shorten",
+    dataType: "json",
+    async: true,
+    success: function(msg) {
+      if (elementID == "coverimg") {
+        $('#coverimg').val(msg.data['url']);
+        addPostHandler('cardimg1');
+      } else if (elementID == "cardimg1") {
+        $('#cardimg1').val(msg.data['url']);
+        addPostHandler('cardimg2');
+      } else if (elementID == "cardimg2") {
+        $('#cardimg2').val(msg.data['url']);
+        addPostHandler('post');
+      }
+    }
+  });
+}
+
+
 function updatePost() {
   $('#updatePostBtn').prop("disabled",true);
   $.ajax({
@@ -90,7 +130,6 @@ $("input[type=text]").on("change paste", function() {
 
 function changeHandler(id) {
   var elementID = "#" + id;
-  console.log(elementID);
   switch (id) {
     case "title":
     if (validateString($(elementID).val())) {
