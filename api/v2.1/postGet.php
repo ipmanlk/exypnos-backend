@@ -2,7 +2,7 @@
 if (isset($_GET['id'])) {
   require_once ('../../config/config.php');
   $id = $_GET['id'];
-  $stmt = mysqli_prepare($link, "SELECT post_id, post, card_img1,card_img2, description as author_info FROM post,author WHERE post_id = ?");
+  $stmt = mysqli_prepare($link, "SELECT post_id, post, card_img1,card_img2, description as author_info FROM post,author WHERE post_id = ? AND post.author_id = author.author_id");
   mysqli_stmt_bind_param($stmt, "i", $id);
   mysqli_stmt_execute($stmt);
   $result = mysqli_stmt_get_result($stmt);
