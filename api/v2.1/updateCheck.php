@@ -1,3 +1,3 @@
 <?php
-echo "v2.0.0-beta";
+echo "v2.0.3";
 ?>
