@@ -1,7 +1,7 @@
 <?php
 header('Access-Control-Allow-Origin: *');
 if ($_POST['s']) {
-  if ($_POST['s'] !== "4a2204811369") {
+  if ($_POST['s'] !== "f6d9248ac046") {
     exit();
   }
 
